@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../user/user.service';
 import * as bcrypt from "bcrypt";
@@ -16,11 +16,12 @@ export class AuthService {
 
     const user = await this.userService.findByUsername(username);
 
-    if (user && this.userService.validatePassword(password, user.password)) {
+    if (user && await this.userService.validatePassword(password, user.password)) {
       const { password, ...result } = user;
       return result;
     }
-    return null;
+    
+    throw new ConflictException('Invalid credentials!');
   }
 
   async login(user: any) {
