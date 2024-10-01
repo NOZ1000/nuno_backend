@@ -10,7 +10,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env', 
+      envFilePath: '.env',
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -25,7 +25,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         autoLoadEntities: true,
         synchronize: true, // Set to false in production
       }),
-    }),   UserModule,
+    }),
+    UserModule,
     AuthModule,
   ],
   controllers: [AppController],

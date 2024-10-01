@@ -14,7 +14,7 @@ export class UserService {
 
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     const { username, password } = createUserDto;
-    const existing_user = await this.userRepository.findOneBy({username});
+    const existing_user = await this.userRepository.findOneBy({ username });
 
     if (existing_user) {
       throw new ConflictException('User already exists');
@@ -31,7 +31,7 @@ export class UserService {
   }
 
   async findByUsername(username: string): Promise<User> {
-    return this.userRepository.findOneBy({username});
+    return this.userRepository.findOneBy({ username });
   }
 
   async validatePassword(plainPassword: string, hashedPassword: string): Promise<boolean> {

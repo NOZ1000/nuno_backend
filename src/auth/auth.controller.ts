@@ -6,14 +6,14 @@ import { AuthCredentialsDto } from './auth.dto';
 export class AuthController {
   constructor(
     private readonly authService: AuthService
-  ) {}
+  ) { }
 
   @Post('login')
   async login(@Body() authCredentialsDto: AuthCredentialsDto) {
-    const user = await this.authService.validateUser(authCredentialsDto); 
-    
+    const user = await this.authService.validateUser(authCredentialsDto);
+
     if (!user) {
-      return { message: 'Invalid credentials!'};
+      return { message: 'Invalid credentials!' };
     }
 
     return this.authService.login(user);
