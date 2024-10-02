@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { RedisModule } from '@nestjs-modules/ioredis';
+import { GameModule } from './game/game.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { RedisModule } from '@nestjs-modules/ioredis';
     }),
     UserModule,
     AuthModule,
+    GameModule,
   ],
   controllers: [AppController],
   providers: [AppService],
