@@ -32,6 +32,9 @@ export class AuthService {
   }
 
   async createUser(authCredentialsDto: AuthCredentialsDto) {
-    return this.userService.createUser(authCredentialsDto);
+    const user = await this.userService.createUser(authCredentialsDto);
+
+    const { password, ...result } = user;
+    return result;
   }
 }
