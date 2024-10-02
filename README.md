@@ -1,8 +1,7 @@
 ## NUno Game backend
 
+## Start redis and postgres
 
-## Start redis
-
-```sh
-sudo docker run -d --name redis-server -p 6379:6379 redis
+```sh 
+sudo docker-compose up -d
 ```
