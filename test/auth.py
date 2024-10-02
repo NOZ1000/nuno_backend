@@ -31,6 +31,11 @@ def login(username, password):
         print('Login is failed')
         return None
 
+def register_login_testuser():
+    username = 'testuser' + str(random.randint(0, 100000))
+    password = username
+    register(username, password)
+    return login(username, password), username
 
 def main():
     username = 'testuser' + str(random.randint(0, 100000))
